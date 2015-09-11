@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.example.buttonDemo"
+          android:versionCode="1"
+          android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="21"/>
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher"
+                 android:name=".ButtonApplication"
+        android:theme="@style/AppTheme">
+        <activity android:name="MyActivity"
+                  android:label="@string/app_name"
+                  android:showOnLockScreen="true"
+                  android:launchMode="singleInstance"
+                >
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.speech.action.WEB_SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.speech.action.VOICE_SEARCH_HANDS_FREE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sec.action.SVOICE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+
+        <receiver android:name=".MediaButtonIntentReceiver" />
+
+        <service android:name=".ApplicationService">
+            <intent-filter>
+                <action android:name="com.myapp.MyService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".StartServiceAtBootReceiver">
+        <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+                   android:value="AIzaSyDxrvrDEujeBV4sAdyntivL7IwF81ugs9A"/>
+    </application>
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- My Location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+
+</manifest>
